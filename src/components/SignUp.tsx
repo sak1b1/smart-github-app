@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import { RootStore } from '../Store';
 import axios from 'axios';
 import { Button, TextField } from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
 // import { RepoDispatchTypes } from '../actions/RepoActionTypes';
 
 const SignUp = () => {
@@ -37,6 +36,7 @@ const SignUp = () => {
 
         userAlreadyExist = true;
       }
+      return null;
     });
     // check github id here
 

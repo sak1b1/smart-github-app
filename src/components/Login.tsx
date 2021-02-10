@@ -2,14 +2,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Dispatch } from "redux";
 import { LOGIN, RepoDispatchTypes, User } from "../actions/RepoActionTypes";
 import React, { useState } from 'react'
-import { GitHub } from '@material-ui/icons';
 import { RootStore } from '../Store';
 import { Button, TextField } from '@material-ui/core';
 // import { RepoDispatchTypes } from '../actions/RepoActionTypes';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -43,6 +41,8 @@ const Login = () => {
             payload: currentUser
           })
         }
+
+        return null;
       });
 
       setEmail('');

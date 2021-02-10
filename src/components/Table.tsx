@@ -49,7 +49,7 @@ export default function DataTable() {
 
 const repoState = useSelector((state: RootStore) => state.repo);
 // const cnt: id=0;
-{repoState.user && (
+if(repoState.user){
   
   repoState.user.allRepo.map((item: RepoXType) => {
     
@@ -59,10 +59,10 @@ const repoState = useSelector((state: RootStore) => state.repo);
       lastName: item.url,
       occupied: item.used,
     });
-
+    return null;
   })
 
-)}
+}
   return (
     <div style={{ paddingLeft: 20, height: 400, width: '50%', alignContent: 'center' }}>
       <h1>Repositories of {repoState.user?.name}</h1>
