@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import { RootStore } from '../Store';
 import axios from 'axios';
 import { Button, TextField } from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
 // import { RepoDispatchTypes } from '../actions/RepoActionTypes';
 
 const SignUp = () => {
@@ -37,6 +36,7 @@ const SignUp = () => {
 
         userAlreadyExist = true;
       }
+      return null;
     });
     // check github id here
 
@@ -115,7 +115,7 @@ const SignUp = () => {
         <TextField
           value={name}
           onChange={(e) => setName(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-signup-name"
           label="Name"
           variant="outlined"
         />
@@ -124,7 +124,7 @@ const SignUp = () => {
         <TextField
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-signup-email"
           label="Email"
           variant="outlined"
           type="email"
@@ -134,7 +134,7 @@ const SignUp = () => {
         <TextField
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-signup-password"
           label="Password"
           variant="outlined"
           type="password"
@@ -144,7 +144,7 @@ const SignUp = () => {
         <TextField
           value={github}
           onChange={(e) => setGithub(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-signup-github"
           label="Github Username"
           variant="outlined"
         />

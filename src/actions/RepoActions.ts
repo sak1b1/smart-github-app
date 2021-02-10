@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import {REPO_FAIL, REPO_LOADING, REPO_SUCCESS, RepoDispatchTypes} from "./RepoActionTypes";
-import axios, { AxiosResponse, AxiosError } from "axios";
+import axios from "axios";
 
 export const GetRepo = (userName: string) => async (dispatch: Dispatch<RepoDispatchTypes>) => {
  // console.log(userName);
@@ -18,7 +18,6 @@ export const GetRepo = (userName: string) => async (dispatch: Dispatch<RepoDispa
     })
 
   } catch(e) {
-    console.log("blind");
     dispatch({
       type: REPO_FAIL
     })

@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 // import { Dispatch } from "redux";
 import {
-  LOGIN,
   RepoDispatchTypes,
   COLLECTION_CREATE,
   RepoXType,
@@ -11,21 +10,14 @@ import {
   UPDATE_ALL_USER,
 
 } from "../actions/RepoActionTypes";
-// import React, { useState } from 'react'
-// import { RepoDispatchTypes } from '../actions/RepoActionTypes';
-import MyComponent from '../components/MultiSelect';
+
 import { RootStore } from '../Store';
 import { Autocomplete } from '@material-ui/lab';
-import { Button, Checkbox, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
 import React, { Dispatch, useState } from 'react';
-import Chip from '@material-ui/core/Chip';
-// import Autocomplete from '@material-ui/lab/Autocomplete';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField';
-// import { useSelector } from 'react-redux';
-// import { RootStore } from '../Store';
-// import { RepoDispatchTypes, RepoXType } from '../actions/RepoActionTypes';
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -45,15 +37,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const CollectionCreate = () => {
 
-  const initialRepos: RepoXType[] = [
+  const initialRepos: RepoXType[] = [];
 
-  ]
-  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [repoListForCollection, setRepoListForCollection] = useState(initialRepos);
-  const [date, setDate] = useState("");
-  const [selectValue, setSelectValue] = useState();
 
   const repoState = useSelector((state: RootStore) => state.repo);
 
@@ -69,33 +57,15 @@ const CollectionCreate = () => {
       {
         repoList.push(repo);
       }
+      return null;
     })
   }
   const dispatch = useDispatch();
 
   const CreateCollection = (e: any) => async (dispatch: Dispatch<RepoDispatchTypes>) => {
     e.preventDefault();
-    let repoList: RepoXType[] = []
-    //let repoListforCollection: RepoXType[] = []
 
     let collectionList: any = []
-
-    // if (repoState.collectionList) {
-    //   collectionList = repoState.collectionList;
-    // }
-
-    // if(repoState.user?.allRepo)
-    // {
-    //   repoList = repoState.user.allRepo;
-    //   repoList.map((repo: RepoXType)=>{
-
-    //     if(repo.id.toString()=="177625980") /// where the magic will happen
-    //     {
-    //       repoListforCollection.push(repo);
-    //     }
-
-    //   })
-    // }
 
     const collectionItem: CollectionItemType = {
       id: Math.random().toString(36).substr(2, 9),
@@ -145,13 +115,11 @@ const CollectionCreate = () => {
 
 
       allUserList.map(user => {
-        console.log(user.id, updatedUser.id);
-        if (user.id == updatedUser.id) {
+        if (user.id === updatedUser.id) {
           user.collectionList = updatedUser.collectionList;
         }
+        return null;
       })
-
-
 
       dispatch({
         type: UPDATE_ALL_USER,
@@ -159,25 +127,17 @@ const CollectionCreate = () => {
       })
     }
 
-    setId("");
+    // setId("");
     setName("");
     setType("");
     setRepoListForCollection(initialRepos);
-    setDate("");
+    // setDate("");
 
-    // make api call here
-
-    // dispatch({
-    //   type: LOGIN,
-    //   payload: user
-    // })
 
   };
 
   const CreateCollectionSubmit = (e: any) => dispatch(CreateCollection(e));
 
-  const [ndl, setNdl] = React.useState([]);
-  const ndlExample = ['Berlin', 'München', 'Saarbrücken', 'Köln'];
 
   return (
     <div className="create-collection">
@@ -186,7 +146,7 @@ const CollectionCreate = () => {
         <TextField
           value={name}
           onChange={(e) => setName(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-name"
           label="Collection Name"
           variant="outlined"
         />
@@ -195,7 +155,7 @@ const CollectionCreate = () => {
         <TextField
           value={type}
           onChange={(e) => setType(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-type"
           label="Collection Type"
           variant="outlined"
         />
@@ -246,9 +206,7 @@ const CollectionCreate = () => {
         <br />
 
         <Button type="submit" variant="contained" color="primary">Create</Button>
-        {/* <button type="submit" className="submit__btn">
-          Create
-        </button> */}
+
         <br />
         <br />
       </form>

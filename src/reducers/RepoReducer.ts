@@ -1,6 +1,6 @@
 import {
-  REPO_FAIL,
-  REPO_LOADING,
+  // REPO_FAIL,
+  // REPO_LOADING,
   REPO_SUCCESS,
 
   SIGNUP,

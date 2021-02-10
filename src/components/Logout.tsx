@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Dispatch } from "redux";
-import { LOGIN, RepoDispatchTypes, LOGOUT } from "../actions/RepoActionTypes";
-import React, { useState } from 'react'
+import { RepoDispatchTypes, LOGOUT } from "../actions/RepoActionTypes";
+import React from 'react'
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import { SignalCellularNullSharp } from '@material-ui/icons';
 import { RootStore } from '../Store';
 // import { RepoDispatchTypes } from '../actions/RepoActionTypes';
 
@@ -28,7 +26,7 @@ const Login = () => {
   return (
     <div className="login">
 
-      {repoState.user.id != '' &&
+      {repoState.user.id !== '' &&
         <div className="div">
         Hi, {repoState.user.github} | <Button onClick={logout} color="inherit">Logout</Button>
         </div>
