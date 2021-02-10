@@ -146,7 +146,7 @@ const CollectionCreate = () => {
         <TextField
           value={name}
           onChange={(e) => setName(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-name"
           label="Collection Name"
           variant="outlined"
         />
@@ -155,7 +155,7 @@ const CollectionCreate = () => {
         <TextField
           value={type}
           onChange={(e) => setType(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-type"
           label="Collection Type"
           variant="outlined"
         />

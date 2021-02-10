@@ -63,7 +63,7 @@ const Login = () => {
         <TextField
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-username"
           label="Email"
           variant="outlined"
           type="email"
@@ -73,7 +73,7 @@ const Login = () => {
         <TextField
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          id="outlined-basic"
+          id="outlined-basic-password"
           label="Password"
           variant="outlined"
           type="password"
