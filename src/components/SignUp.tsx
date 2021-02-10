@@ -41,8 +41,10 @@ const SignUp = () => {
     // check github id here
 
     let res;
+    let resUser;
     try {
       res = await axios.get(`https://api.github.com/users/${github}/repos`);
+      resUser = await axios.get(`https://api.github.com/users/${github}`);
 
       console.log(res.data);
       console.log(typeof (res.data));
@@ -83,6 +85,9 @@ const SignUp = () => {
         github: github,
         allRepo: allRepoList,
         collectionList: emptyCollection,
+        follower: resUser?.data.followers,
+        following: resUser?.data.following,
+        avatar: resUser?.data.avatar_url,
 
       }
 

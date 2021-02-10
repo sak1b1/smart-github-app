@@ -60,6 +60,9 @@ export type User = {
   github: string,
   allRepo: RepoXType[],
   collectionList: CollectionItemType[],
+  follower: number,
+  following: number,
+  avatar: string,
 }
 
 export type CollectionItemType = {

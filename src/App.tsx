@@ -3,7 +3,7 @@ import './App.css';
 import { useSelector } from "react-redux";
 import { RootStore } from "./Store";
 import ButtonAppBar from './components/AppBar'
-import { Card, CardContent } from '@material-ui/core';
+import { Card, CardContent, CardMedia } from '@material-ui/core';
 
 
 import Login from './components/Login'
@@ -34,92 +34,108 @@ function App() {
       {/* <SideDrawer /> */}
       <ButtonAppBar />
 
-      <div>
-        <Router>
-          <Link to="/register">Register</Link>
-          {' '}
-          <Link to="/login">Login</Link>
-          {' '}
-          <Link to="/">Home</Link>
-          {' '}
-          <Link to="/collection-create">Collection Create</Link>
-          {' '}
-          <Link to="/collections">Collections</Link>
-          {' '}
-          <Link to="/my-repos">My Repos</Link>
-          {' '}
-          <div>
-            {/* <nav>
-              <ul>
-                <li>
-                  <Link to="/register">Register</Link>
-                </li>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
+      <div className="main">
+        {repoState.user.id !== "" &&
+          <div className="dashboard">
+            <h1>DASHBOARD</h1>
+            {repoState.user.name !== "" &&
+              <div>
+                <Card style={{ width: "300px", backgroundColor: '#ff9966' }}>
+
+                  <CardContent>
+                    <img
+                      style={{ width: '200px', height: '200px' }}
+                      src={repoState.user.avatar}
+                      alt={""}
+                    />
+                    <h1>{repoState.user.github}</h1>
+                    <h4>Collections: {repoState.user.collectionList.length}</h4>
+                    <h4>Repositories: {repoState.user.allRepo.length}</h4>
+                    <h4>Follower: {repoState.user.follower}</h4>
+                    <h4>Following: {repoState.user.following}</h4>
+                  </CardContent>
+                </Card>
+
+                <Card style={{ width: "300px", backgroundColor: '#ffcc99' }}>
+                <CardContent>
+                  <h3>Total Collections</h3>
+                  <h1>{repoState.user.collectionList.length}</h1>
+                </CardContent>
+                </Card>
+              </div>
+            }
+            <div className="routes">
+              <div>
+                <Router>
                   <Link to="/collection-create">Collection Create</Link>
-                </li>
-                <li>
+                  {' '}
                   <Link to="/collections">Collections</Link>
-                </li>
-                <li>
+                  {' '}
                   <Link to="/my-repos">My Repos</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/users">Users</Link>
-                </li>
-              </ul>
-            </nav> */}
+                  {' '}
+                  <div>
+                    <Switch>
+                      <Route path="/collection-create">
+                        <CollectionCreatePage />
+                      </Route>
 
-            {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
-            <Switch>
+                      <Route path="/collections">
+                        <CollectionListPage />
+                      </Route>
 
-              <Route path="/register">
-                <RegisterPage />
-              </Route>
+                      <Route path="/my-repos">
+                        <MyRepoPage />
+                      </Route>
 
-              <Route path="/login">
-                <LoginPage />
-              </Route>
+                      <Route path="/">
+                        <HomePage />
+                      </Route>
 
-              <Route path="/collection-create">
-                <CollectionCreatePage />
-              </Route>
-
-              <Route path="/collections">
-                <CollectionListPage />
-              </Route>
-
-              <Route path="/my-repos">
-                <MyRepoPage />
-              </Route>
-
-              <Route path="/">
-                <HomePage />
-              </Route>
-
-            </Switch>
+                    </Switch>
+                  </div>
+                </Router>
+              </div>
+            </div>
           </div>
-        </Router>
+        }
+
+        {repoState.user.id === "" &&
+          <div className="welcome">
+            <h1>Welcome</h1>
+            <div className="routes">
+              <div>
+                <Router>
+                  <Link to="/register">Register</Link>
+                  {' '}
+                  <Link to="/login">Login</Link>
+                  {' '}
+
+                  <div>
+                    <Switch>
+
+                      <Route path="/register">
+                        <RegisterPage />
+                      </Route>
+
+                      <Route path="/login">
+                        <LoginPage />
+                      </Route>
+
+                      <Route path="/">
+                        <HomePage />
+                      </Route>
+
+                    </Switch>
+                  </div>
+                </Router>
+              </div>
+            </div>
+          </div>
+        }
       </div>
 
-      {repoState.user.name !== "" &&
-        <Card style={{ width: "300px" }}>
-          <CardContent>
-            <p>User: {repoState.user.name}</p>
-            <p>Repositories: {repoState.user.allRepo.length}</p>
-            <p>Collections: {repoState.user.collectionList.length}</p>
-          </CardContent>
-        </Card>
-      }
+
+
       {/* <br /> */}
 
       {/* <br /> */}
