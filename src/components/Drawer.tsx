@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,7 +12,9 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { IconButton } from '@material-ui/core';
-
+import Logout from './Logout';
+import { RootStore } from '../Store';
+import { useSelector } from 'react-redux'
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -25,6 +27,7 @@ const useStyles = makeStyles({
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function SideDrawer() {
+  const repoState = useSelector((state: RootStore) => state.repo);
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -66,12 +69,21 @@ export default function SideDrawer() {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['All mail', 'Trash', 'Spammmm'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
+
+
+        {repoState.user.id !== '' &&
+          <ListItem button key={'Logout'}>
+              <ListItemIcon><InboxIcon /> </ListItemIcon>
+              <Logout />
+          </ListItem>
+        }
+
       </List>
     </div>
   );
@@ -81,8 +93,8 @@ export default function SideDrawer() {
       {(['left'] as Anchor[]).map((anchor) => (
         <React.Fragment key={anchor}>
           <IconButton onClick={toggleDrawer(anchor, true)} color="primary" aria-label="upload picture" component="span">
-          <GitHubIcon />
-        </IconButton>
+            <GitHubIcon />
+          </IconButton>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>

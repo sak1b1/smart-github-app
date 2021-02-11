@@ -112,47 +112,6 @@ function App() {
         }
       </div>
 
-
-
-      {/* <br /> */}
-
-      {/* <br /> */}
-
-      {/* <div>
-
-        {repoState.user.name == "" &&
-          <div>
-            <Login />
-            <SignUp />
-          </div>
-        }
-
-        {repoState.user &&
-          <SnackBar />
-        }
-
-        {repoState.user.name != "" &&
-          <div>
-            <CollectionCreate />
-          </div>
-        }
-
-        {repoState.user.name != "" && (
-          <div>
-            <div className="login">
-              <DataTable />
-            </div>
-            <br />
-            <br />
-            <div>
-              <CollectionTable />
-            </div>
-
-          </div>
-        )}
-
-      </div> */}
-
     </div>
 
   );
@@ -160,7 +119,6 @@ function App() {
 
 function RegisterPage() {
   return <div><SignUp /></div>;
-  // return<h2>WTF</h2>;
 }
 
 function LoginPage() {
