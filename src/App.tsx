@@ -26,8 +26,6 @@ import {
 function App() {
 
   const repoState = useSelector((state: RootStore) => state.repo);
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setUserName(event.target.value);
-  // const handleSubmit = () => dispatch(GetRepo(userName));
 
   return (
     <div className="App">
@@ -37,7 +35,7 @@ function App() {
       <div className="main">
         {repoState.user.id !== "" &&
           <div className="dashboard">
-            
+
 
             <br />
             <div className="routes">
@@ -86,7 +84,7 @@ function App() {
                   <Link to="/signup">Sign up</Link>
                   {'  |  '}
                   <Link to="/login">Login</Link>
-                 
+
 
                   <div>
                     <Switch>
@@ -112,47 +110,6 @@ function App() {
         }
       </div>
 
-
-
-      {/* <br /> */}
-
-      {/* <br /> */}
-
-      {/* <div>
-
-        {repoState.user.name == "" &&
-          <div>
-            <Login />
-            <SignUp />
-          </div>
-        }
-
-        {repoState.user &&
-          <SnackBar />
-        }
-
-        {repoState.user.name != "" &&
-          <div>
-            <CollectionCreate />
-          </div>
-        }
-
-        {repoState.user.name != "" && (
-          <div>
-            <div className="login">
-              <DataTable />
-            </div>
-            <br />
-            <br />
-            <div>
-              <CollectionTable />
-            </div>
-
-          </div>
-        )}
-
-      </div> */}
-
     </div>
 
   );
@@ -160,7 +117,6 @@ function App() {
 
 function RegisterPage() {
   return <div><SignUp /></div>;
-  // return<h2>WTF</h2>;
 }
 
 function LoginPage() {

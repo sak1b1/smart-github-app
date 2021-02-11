@@ -75,6 +75,7 @@ export default function Tags() {
                   name: optionValue[i].name,
                   url: optionValue[i].url,
                   used: true,
+                  commits: optionValue[i].commits,
                 }
               );
             }
@@ -86,7 +87,7 @@ export default function Tags() {
           <TextField
             {...params}
             variant="standard"
-            label="Repositories"
+            label="Repositoriess"
             placeholder=""
           />
         )}
@@ -95,10 +96,6 @@ export default function Tags() {
   );
 }
 
-
-function dispatch(arg0: (dispatch: Dispatch<RepoDispatchTypes>) => Promise<void>) {
-  throw new Error('Function not implemented.');
-}
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 // const top100Films = [
 //   { title: 'The Shawshank Redemption', year: 1994 },

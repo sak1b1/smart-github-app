@@ -11,13 +11,13 @@ export default function Dashboard() {
               <br/>
               {repoState.user.name !== "" &&
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                  <Card style={{ width: "300px", backgroundColor: '#ffcc99', flex: '0 1 300px' }}>
+                  <Card style={{ width: "300px", backgroundColor: '#effaf0', flex: '0 1 300px' }}>
                     <CardContent>
                       <h3>Total Collections</h3>
                       <h1>{repoState.user.collectionList.length}</h1>
                     </CardContent>
                   </Card>
-                  <Card style={{ width: "300px", backgroundColor: '#ff9966', flex: '0 1 300px' }}>
+                  <Card style={{ width: "300px", backgroundColor: '#effaf0', flex: '0 1 300px' }}>
 
                     <CardContent>
                       <img

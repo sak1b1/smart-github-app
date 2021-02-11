@@ -19,7 +19,6 @@ const SignUp = () => {
 
   const Register = (e: any) => async (dispatch: Dispatch<RepoDispatchTypes>) => {
     e.preventDefault();
-    console.log("in Register of Sign Up component");
 
     let allUserList: any = []
 
@@ -67,12 +66,22 @@ const SignUp = () => {
       const dataSize: number = res?.data.length;
 
       for (let i: number = 0; i < dataSize; i++) {
+        let commitsRes: any;
+        try{
+          // commitsRes = await axios.get(`https://api.github.com/users/${github}/repos`);
+          let repoName: string = res?.data[i].name;
+          commitsRes = await axios.get(`https://api.github.com/repos/${github}/${repoName}/commits`);
+        }catch(err)
+        {
+
+        }
         allRepoList.push(
           {
             id: res?.data[i].id,
             name: res?.data[i].name,
             url: res?.data[i].url,
             used: false,
+            commits: commitsRes.data,
           }
         );
       }
@@ -155,7 +164,7 @@ const SignUp = () => {
         />
         <br />
         <br />
-        <Button type="submit" variant="contained" color="primary">Sign up</Button>
+        <Button type="submit" variant="contained" color="inherit">Sign up</Button>
         <br />
         <br />
 

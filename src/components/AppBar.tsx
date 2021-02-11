@@ -15,11 +15,16 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      // marginRight: theme.spacing(2),
     },
     title: {
       flexGrow: 1,
     },
+    header: {
+      backgroundColor: "#28234a",
+      color: "white",
+      boxShadow: "0px 0px 0px 0px"
+    }
   }),
 );
 
@@ -30,9 +35,9 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.header}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton style={{flex: '1'}} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             {/* <MenuIcon /> */}
             <GitHubIcon />
           </IconButton>
