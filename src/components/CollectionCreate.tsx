@@ -23,11 +23,11 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      // display: 'flex',
+      display: 'flex',
       // flexDirection: 'column',
-      // justifyContent: 'center',
-      // alignItems: 'center',
-      width: '50%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
       // '& > * + *': {
       //   marginTop: theme.spacing(3),
       // },
@@ -142,8 +142,8 @@ const CollectionCreate = () => {
 
 
   return (
-    <div className="create-collection">
-      <form className="login__form" onSubmit={(e) => CreateCollectionSubmit(e)}>
+    <div className="create-collection" style={{}}>
+      <form  className="login__form" onSubmit={(e) => CreateCollectionSubmit(e)}>
         <h1>Create New Collection</h1>
         <TextField
           value={name}
@@ -164,7 +164,7 @@ const CollectionCreate = () => {
         <br />
         <br />
 
-        <div>
+        <div style={{ }}>
           <div className={classes.root}>
             <Autocomplete
               multiple
@@ -194,9 +194,9 @@ const CollectionCreate = () => {
                 }
               }}
               renderInput={(params) => (
-                <TextField
+                <TextField style={{width: '230px'}}
                   {...params}
-                  variant="standard"
+                  variant="outlined"
                   label="Repositories"
                   placeholder=""
                 />

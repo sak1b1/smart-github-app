@@ -26,8 +26,6 @@ import {
 function App() {
 
   const repoState = useSelector((state: RootStore) => state.repo);
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setUserName(event.target.value);
-  // const handleSubmit = () => dispatch(GetRepo(userName));
 
   return (
     <div className="App">
