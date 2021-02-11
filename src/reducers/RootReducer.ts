@@ -1,5 +1,4 @@
 import {combineReducers} from "redux";
-import pokemonReducer from "./PokemonReducer";
 import repoReducer from "./RepoReducer";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -11,7 +10,6 @@ const persistConfig = {
 }
 
 const RootReducer = combineReducers({
-  pokemon: pokemonReducer,
   repo: repoReducer
 });
 
