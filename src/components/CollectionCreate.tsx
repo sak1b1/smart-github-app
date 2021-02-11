@@ -41,6 +41,7 @@ const CollectionCreate = () => {
 
   const [name, setName] = useState("");
   const [type, setType] = useState("");
+  const [blank, setBlank] = useState<RepoXType[]>(initialRepos);
   const [repoListForCollection, setRepoListForCollection] = useState(initialRepos);
 
   const repoState = useSelector((state: RootStore) => state.repo);
@@ -131,6 +132,7 @@ const CollectionCreate = () => {
     setName("");
     setType("");
     setRepoListForCollection(initialRepos);
+    setBlank(initialRepos);
     // setDate("");
 
 
@@ -170,7 +172,7 @@ const CollectionCreate = () => {
               options={repoList}
               getOptionLabel={(option: RepoXType) => option.name}
               // onChange={handleChange(e,values)}
-              //defaultValue={[top100Films[13]]}
+              defaultValue={blank}
               //onChange={(e,v) => handleChange(v)}
               onChange={(_, optionValue) => {
                 if (optionValue) {

@@ -11,6 +11,8 @@ export const COLLECTION_READ = "COLLECTION_READ"
 export const COLLECTION_UPDATE = "COLLECTION_LOADING"
 export const COLLECTION_DELETE = "COLLECTION_DELETE"
 
+export const LOCATION_CHANGE = "LOCATION_CHANGE"
+
 export const UPDATE_ALL_USER = "UPDATE_ALL_USER"
 export const UPDATE_USER_ALL_REPO = "UPDATE_USER_ALL_REPO"
 
@@ -63,6 +65,11 @@ export type User = {
   follower: number,
   following: number,
   avatar: string,
+}
+
+export type Location = {
+  location: string,
+
 }
 
 export type CollectionItemType = {
@@ -130,6 +137,11 @@ export interface UpdateAllUser{
   payload: [User]
 }
 
+export interface LocationChange{
+  type: typeof LOCATION_CHANGE,
+  payload: string
+}
+
 export type RepoDispatchTypes = RepoLoading
   | RepoFail | RepoSuccess | SignUp | Login | Logout | CollectionCreate
-  | UpdateAllUser | UpdateUserAllRepo
+  | UpdateAllUser | UpdateUserAllRepo | LocationChange

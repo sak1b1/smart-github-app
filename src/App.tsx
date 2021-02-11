@@ -3,7 +3,7 @@ import './App.css';
 import { useSelector } from "react-redux";
 import { RootStore } from "./Store";
 import ButtonAppBar from './components/AppBar'
-import { Card, CardContent, CardMedia } from '@material-ui/core';
+
 
 
 import Login from './components/Login'
@@ -12,12 +12,12 @@ import CollectionCreate from './components/CollectionCreate';
 import SignUp from './components/SignUp';
 // import SnackBar from './components/SnackBar';
 import CollectionTable from './components/CollectionTable';
-
+import Dashboard from './components/Dashboard';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 
 // import SideDrawer from './components/Drawer';
@@ -37,42 +37,20 @@ function App() {
       <div className="main">
         {repoState.user.id !== "" &&
           <div className="dashboard">
-            <h1>DASHBOARD</h1>
-            {repoState.user.name !== "" &&
-              <div>
-                <Card style={{ width: "300px", backgroundColor: '#ff9966' }}>
+            
 
-                  <CardContent>
-                    <img
-                      style={{ width: '200px', height: '200px' }}
-                      src={repoState.user.avatar}
-                      alt={""}
-                    />
-                    <h1>{repoState.user.github}</h1>
-                    <h4>Collections: {repoState.user.collectionList.length}</h4>
-                    <h4>Repositories: {repoState.user.allRepo.length}</h4>
-                    <h4>Follower: {repoState.user.follower}</h4>
-                    <h4>Following: {repoState.user.following}</h4>
-                  </CardContent>
-                </Card>
-
-                <Card style={{ width: "300px", backgroundColor: '#ffcc99' }}>
-                <CardContent>
-                  <h3>Total Collections</h3>
-                  <h1>{repoState.user.collectionList.length}</h1>
-                </CardContent>
-                </Card>
-              </div>
-            }
+            <br />
             <div className="routes">
               <div>
                 <Router>
+                  <Link to="/">Home</Link>
+                  {'  |  '}
                   <Link to="/collection-create">Collection Create</Link>
-                  {' '}
+                  {'  |  '}
                   <Link to="/collections">Collections</Link>
-                  {' '}
+                  {'  |  '}
                   <Link to="/my-repos">My Repos</Link>
-                  {' '}
+                  {'  '}
                   <div>
                     <Switch>
                       <Route path="/collection-create">
@@ -88,7 +66,7 @@ function App() {
                       </Route>
 
                       <Route path="/">
-                        <HomePage />
+                        <Dashboard />
                       </Route>
 
                     </Switch>
@@ -101,19 +79,19 @@ function App() {
 
         {repoState.user.id === "" &&
           <div className="welcome">
-            <h1>Welcome</h1>
+            <h1>Welcome to Smart Github App!</h1>
             <div className="routes">
               <div>
                 <Router>
-                  <Link to="/register">Register</Link>
-                  {' '}
+                  <Link to="/signup">Sign up</Link>
+                  {'  |  '}
                   <Link to="/login">Login</Link>
-                  {' '}
+                 
 
                   <div>
                     <Switch>
 
-                      <Route path="/register">
+                      <Route path="/signup">
                         <RegisterPage />
                       </Route>
 
@@ -176,6 +154,7 @@ function App() {
       </div> */}
 
     </div>
+
   );
 }
 
@@ -189,7 +168,7 @@ function LoginPage() {
 }
 
 function HomePage() {
-  return <div className="div"><h2>Home Page</h2></div>;
+  return <div className="div"><h2>{' '}</h2></div>;
 }
 
 function CollectionCreatePage() {

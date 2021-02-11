@@ -17,6 +17,7 @@ import {
   CollectionItemType,
   RepoXType,
   // RepoListType,
+  LOCATION_CHANGE,
   User
 } from "../actions/RepoActionTypes";
 
@@ -25,7 +26,8 @@ interface DefaultStateI {
   allUserList?: [User],
   repo?: [RepoXType],
   user: User,
-  collectionList?: [CollectionItemType]
+  collectionList?: [CollectionItemType],
+  location: string,
   // repox?: RepoXType,
   // repoList?: RepoListType,
   // notes: RepoListType[]
@@ -46,6 +48,7 @@ const defaultState: DefaultStateI = {
     following: 0,
     avatar: '',
   },
+  location: '',
 
 };
 
@@ -79,6 +82,7 @@ const repoReducer = (state: DefaultStateI = defaultState, action: RepoDispatchTy
           following: 0,
           avatar: '',
         },
+        location: ''
       }
     case COLLECTION_CREATE:
       return {
@@ -103,6 +107,12 @@ const repoReducer = (state: DefaultStateI = defaultState, action: RepoDispatchTy
         ...state,
         allUserList: action.payload
       }
+
+    case LOCATION_CHANGE:
+      return{
+        ...state,
+        location: action.payload
+      }  
     // case REPO_FAIL:
     //   return {
     //     loading: false,

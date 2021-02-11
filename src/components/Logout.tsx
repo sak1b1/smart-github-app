@@ -12,7 +12,6 @@ const Login = () => {
 
   const ResetAll = () => async (dispatch: Dispatch<RepoDispatchTypes>) => {
     
-    console.log("in logout")
     dispatch({
       type: LOGOUT,
       // payload: null
@@ -24,11 +23,11 @@ const Login = () => {
 
 
   return (
-    <div className="login">
+    <div className="logout">
 
       {repoState.user.id !== '' &&
         <div className="div">
-        Hi, {repoState.user.github} | <Button onClick={logout} color="inherit">Logout</Button>
+          <Button onClick={logout} color="inherit">Logout</Button>
         </div>
       }
       

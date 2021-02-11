@@ -30,19 +30,22 @@ const columns: ColDef[] = [
 
 let cnt: number= 1;
 let rows: any[]= [
-  // { id: 0, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 0, lastName: 'Snow', firstName: 'Jon', age: 35 },
 ];
 
 
 
 
 
-export default function CollectionTable() {
+const CollectionTable = (props: any) =>{
 
 const repoState = useSelector((state: RootStore) => state.repo);
 // const cnt: id=0;
 if(repoState.user.id!==''){
-  
+  if(rows.length !== 0)
+  {
+    rows = [];
+  }
   repoState.user.collectionList.map(item => {
     console.log(item.name);
     let repoNamesTogether: string = "";
@@ -71,9 +74,9 @@ if(repoState.user.id!==''){
       flexDirection: 'column',
       justifyContent: 'center',
       //alignItems: 'center',
-      paddingLeft: 20,
+
       height: 400,
-      width: '50%',
+      width: '100%',
       //alignContent: 'center' 
     }}>
       <h1>Collections of {repoState.user?.name}</h1>
@@ -81,3 +84,5 @@ if(repoState.user.id!==''){
     </div>
   );
 }
+
+export default CollectionTable;
