@@ -83,7 +83,7 @@ const Login = () => {
         />
         <br />
         <br />
-        <Button type="submit" variant="contained" color="primary">Login</Button>
+        <Button type="submit" variant="contained" color="inherit">Login</Button>
         <br />
         <br />
       </form>

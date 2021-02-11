@@ -51,6 +51,7 @@ export type RepoXType = {
   name: string,
   url: string,
   used: boolean,
+  commits: object,
 
 }
 

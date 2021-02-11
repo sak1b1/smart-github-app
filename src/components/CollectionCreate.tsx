@@ -144,7 +144,7 @@ const CollectionCreate = () => {
   return (
     <div className="create-collection" style={{}}>
       <form  className="login__form" onSubmit={(e) => CreateCollectionSubmit(e)}>
-        <h1>Create New Collection</h1>
+        <h1>Create Collection</h1>
         <TextField
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -187,6 +187,7 @@ const CollectionCreate = () => {
                         name: optionValue[i].name,
                         url: optionValue[i].url,
                         used: true,
+                        commits: optionValue[i].commits,
                       }
                     );
                   }
@@ -207,7 +208,7 @@ const CollectionCreate = () => {
         <br />
         <br />
 
-        <Button type="submit" variant="contained" color="primary">Create</Button>
+        <Button type="submit" variant="contained" color="inherit">Create</Button>
 
         <br />
         <br />

@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
+    header: {
+      backgroundColor: "#28234a",
+      color: "white",
+      boxShadow: "0px 0px 0px 0px"
+    }
   }),
 );
 
@@ -30,7 +35,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.header}>
         <Toolbar>
           <IconButton style={{flex: '1'}} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             {/* <MenuIcon /> */}

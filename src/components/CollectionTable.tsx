@@ -6,9 +6,10 @@ import { RootStore } from '../Store';
 const columns: ColDef[] = [
   // { field: 'id', headerName: 'ID', width: 200 },
   { field: 'name', headerName: 'Collection Name', width: 200 },
-  { field: 'repoNames', headerName: 'Repo Names', width: 200 },
   { field: 'type', headerName: 'Collection Type', width: 200 },
   { field: 'created', headerName: 'Created', width: 200 },
+  { field: 'repoNames', headerName: 'Repo Names', flex: 1 },
+  { field: 'repos', headerName: 'Created', width: 0 },
   // {
   //   field: 'age',
   //   headerName: 'Age',
@@ -47,7 +48,6 @@ if(repoState.user.id!==''){
     rows = [];
   }
   repoState.user.collectionList.map(item => {
-    console.log(item.name);
     let repoNamesTogether: string = "";
     item.repos.map(repo => {
       if(repoNamesTogether=== "")
@@ -56,12 +56,14 @@ if(repoState.user.id!==''){
       repoNamesTogether = repoNamesTogether + ",  " +repo.name;
       return null;
     })
+
     rows.push({
       id: cnt,
       repoNames: repoNamesTogether,
       name: item.name,
       type: item.type,
-      created: item.dateCreated
+      created: item.dateCreated,
+      repos: item.repos,
     });
     cnt++;
     return null;
@@ -80,7 +82,13 @@ if(repoState.user.id!==''){
       //alignContent: 'center' 
     }}>
       <h1>Collections of {repoState.user?.name}</h1>
-      <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+      <DataGrid 
+      rows={rows} 
+      columns={columns} 
+      pageSize={5} 
+      
+      //onRowSelected={handleRowSelection}
+      />
     </div>
   );
 }

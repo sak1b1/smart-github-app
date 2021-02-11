@@ -35,7 +35,7 @@ function App() {
       <div className="main">
         {repoState.user.id !== "" &&
           <div className="dashboard">
-            
+
 
             <br />
             <div className="routes">
@@ -84,7 +84,7 @@ function App() {
                   <Link to="/signup">Sign up</Link>
                   {'  |  '}
                   <Link to="/login">Login</Link>
-                 
+
 
                   <div>
                     <Switch>
