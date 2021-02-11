@@ -29,7 +29,7 @@ const columns: ColDef[] = [
 
 
 
-const rows: any[]= [
+let rows: any[]= [
   // { id: 0, lastName: 'Snow', firstName: 'Jon', age: 35 },
   // { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
   // { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
@@ -45,12 +45,15 @@ const rows: any[]= [
 
 
 
-export default function DataTable() {
+const DataTable = (props: any) =>{
 
 const repoState = useSelector((state: RootStore) => state.repo);
 // const cnt: id=0;
 if(repoState.user){
-  
+  if(rows.length !== 0)
+  {
+    rows = [];
+  }
   repoState.user.allRepo.map((item: RepoXType) => {
     
     rows.push({
@@ -64,9 +67,11 @@ if(repoState.user){
 
 }
   return (
-    <div style={{ paddingLeft: 20, height: 400, width: '50%', alignContent: 'center' }}>
+    <div style={{  height: 400, width: '100%', alignContent: 'center' }}>
       <h1>Repositories of {repoState.user?.name}</h1>
       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
     </div>
   );
 }
+
+export default DataTable;

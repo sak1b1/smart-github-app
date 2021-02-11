@@ -7,7 +7,7 @@ import {
   LOGIN,
   LOGOUT,
 
-  COLLECTION_CREATE,  
+  COLLECTION_CREATE,
 
   UPDATE_ALL_USER,
   UPDATE_USER_ALL_REPO,
@@ -16,7 +16,8 @@ import {
   // RepoType,
   CollectionItemType,
   RepoXType,
-  RepoListType,
+  // RepoListType,
+  LOCATION_CHANGE,
   User
 } from "../actions/RepoActionTypes";
 
@@ -25,7 +26,8 @@ interface DefaultStateI {
   allUserList?: [User],
   repo?: [RepoXType],
   user: User,
-  collectionList?: [CollectionItemType]
+  collectionList?: [CollectionItemType],
+  location: string,
   // repox?: RepoXType,
   // repoList?: RepoListType,
   // notes: RepoListType[]
@@ -42,18 +44,13 @@ const defaultState: DefaultStateI = {
     github: '',
     allRepo: [],
     collectionList: [],
+    follower: 0,
+    following: 0,
+    avatar: '',
   },
- 
-  // allUserList: null,
-  // user?: null
-  //notes: []
-  // repo: []
+  location: '',
 
 };
-
-interface NoteState {
-  notes: RepoListType[]
-}
 
 
 
@@ -61,9 +58,9 @@ const repoReducer = (state: DefaultStateI = defaultState, action: RepoDispatchTy
   switch (action.type) {
 
     case SIGNUP:
-      return { 
+      return {
         ...state,
-        allUserList: action.payload 
+        allUserList: action.payload
       }
     case LOGIN:
       return {
@@ -81,10 +78,14 @@ const repoReducer = (state: DefaultStateI = defaultState, action: RepoDispatchTy
           github: '',
           allRepo: [],
           collectionList: [],
+          follower: 0,
+          following: 0,
+          avatar: '',
         },
+        location: ''
       }
     case COLLECTION_CREATE:
-      return{
+      return {
         ...state,
         // collectionList: action.payload
         user: {
@@ -94,18 +95,24 @@ const repoReducer = (state: DefaultStateI = defaultState, action: RepoDispatchTy
       }
 
     case UPDATE_USER_ALL_REPO:
-      return{
+      return {
         ...state,
-        user:{
+        user: {
           ...state.user,
           allRepo: action.payload
         }
-      }  
+      }
     case UPDATE_ALL_USER:
-      return{
+      return {
         ...state,
         allUserList: action.payload
-      }   
+      }
+
+    case LOCATION_CHANGE:
+      return{
+        ...state,
+        location: action.payload
+      }  
     // case REPO_FAIL:
     //   return {
     //     loading: false,
@@ -121,7 +128,7 @@ const repoReducer = (state: DefaultStateI = defaultState, action: RepoDispatchTy
         ...state,
         repo: action.payload
       }
-    
+
     default:
       return state
   }

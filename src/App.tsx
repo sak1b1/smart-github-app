@@ -3,7 +3,7 @@ import './App.css';
 import { useSelector } from "react-redux";
 import { RootStore } from "./Store";
 import ButtonAppBar from './components/AppBar'
-import { Card, CardContent } from '@material-ui/core';
+
 
 
 import Login from './components/Login'
@@ -12,12 +12,12 @@ import CollectionCreate from './components/CollectionCreate';
 import SignUp from './components/SignUp';
 // import SnackBar from './components/SnackBar';
 import CollectionTable from './components/CollectionTable';
-
+import Dashboard from './components/Dashboard';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 
 // import SideDrawer from './components/Drawer';
@@ -34,92 +34,86 @@ function App() {
       {/* <SideDrawer /> */}
       <ButtonAppBar />
 
-      <div>
-        <Router>
-          <Link to="/register">Register</Link>
-          {' '}
-          <Link to="/login">Login</Link>
-          {' '}
-          <Link to="/">Home</Link>
-          {' '}
-          <Link to="/collection-create">Collection Create</Link>
-          {' '}
-          <Link to="/collections">Collections</Link>
-          {' '}
-          <Link to="/my-repos">My Repos</Link>
-          {' '}
-          <div>
-            {/* <nav>
-              <ul>
-                <li>
-                  <Link to="/register">Register</Link>
-                </li>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
+      <div className="main">
+        {repoState.user.id !== "" &&
+          <div className="dashboard">
+            
+
+            <br />
+            <div className="routes">
+              <div>
+                <Router>
                   <Link to="/">Home</Link>
-                </li>
-                <li>
+                  {'  |  '}
                   <Link to="/collection-create">Collection Create</Link>
-                </li>
-                <li>
+                  {'  |  '}
                   <Link to="/collections">Collections</Link>
-                </li>
-                <li>
+                  {'  |  '}
                   <Link to="/my-repos">My Repos</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/users">Users</Link>
-                </li>
-              </ul>
-            </nav> */}
+                  {'  '}
+                  <div>
+                    <Switch>
+                      <Route path="/collection-create">
+                        <CollectionCreatePage />
+                      </Route>
 
-            {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
-            <Switch>
+                      <Route path="/collections">
+                        <CollectionListPage />
+                      </Route>
 
-              <Route path="/register">
-                <RegisterPage />
-              </Route>
+                      <Route path="/my-repos">
+                        <MyRepoPage />
+                      </Route>
 
-              <Route path="/login">
-                <LoginPage />
-              </Route>
+                      <Route path="/">
+                        <Dashboard />
+                      </Route>
 
-              <Route path="/collection-create">
-                <CollectionCreatePage />
-              </Route>
-
-              <Route path="/collections">
-                <CollectionListPage />
-              </Route>
-
-              <Route path="/my-repos">
-                <MyRepoPage />
-              </Route>
-
-              <Route path="/">
-                <HomePage />
-              </Route>
-
-            </Switch>
+                    </Switch>
+                  </div>
+                </Router>
+              </div>
+            </div>
           </div>
-        </Router>
+        }
+
+        {repoState.user.id === "" &&
+          <div className="welcome">
+            <h1>Welcome to Smart Github App!</h1>
+            <div className="routes">
+              <div>
+                <Router>
+                  <Link to="/signup">Sign up</Link>
+                  {'  |  '}
+                  <Link to="/login">Login</Link>
+                 
+
+                  <div>
+                    <Switch>
+
+                      <Route path="/signup">
+                        <RegisterPage />
+                      </Route>
+
+                      <Route path="/login">
+                        <LoginPage />
+                      </Route>
+
+                      <Route path="/">
+                        <HomePage />
+                      </Route>
+
+                    </Switch>
+                  </div>
+                </Router>
+              </div>
+            </div>
+          </div>
+        }
       </div>
 
-      {repoState.user.name !== "" &&
-        <Card style={{ width: "300px" }}>
-          <CardContent>
-            <p>User: {repoState.user.name}</p>
-            <p>Repositories: {repoState.user.allRepo.length}</p>
-            <p>Collections: {repoState.user.collectionList.length}</p>
-          </CardContent>
-        </Card>
-      }
+
+
       {/* <br /> */}
 
       {/* <br /> */}
@@ -160,6 +154,7 @@ function App() {
       </div> */}
 
     </div>
+
   );
 }
 
@@ -173,7 +168,7 @@ function LoginPage() {
 }
 
 function HomePage() {
-  return <div className="div"><h2>Home Page</h2></div>;
+  return <div className="div"><h2>{' '}</h2></div>;
 }
 
 function CollectionCreatePage() {

@@ -34,6 +34,9 @@ const Login = () => {
             github: user.github,
             allRepo: user.allRepo,
             collectionList: user.collectionList,
+            follower: user.follower,
+            following: user.following,
+            avatar: user.avatar,
           }
 
           dispatch({
